@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -950,7 +951,7 @@
 <!-- NAVBAR -->
 <nav id="navbar">
   <a class="nav-logo" href="#home">
-    <div class="logo-img-wrap"><img src="උ20260326_095441.png" alt="DualSyntax Logo"></div>
+    <div class="logo-img-wrap"><img src="dual-logo.png" alt="DualSyntax Logo"></div>
     </div>
     <span class="logo-text">DualSyntax</span>
   </a>
@@ -1422,10 +1423,14 @@
   const mobileLinks = mob.querySelectorAll('a');
 
   // Open menu
-  ham.addEventListener('click', () => {
+ham.addEventListener('click', () => {
+  if (mob.classList.contains('open')) {
+    closeMobile();
+  } else {
     mob.classList.add('open');
-    document.body.style.overflow = 'hidden'; // Prevent body scroll
-  });
+    document.body.style.overflow = 'hidden';
+  }
+});
 
   // Close functions
   function closeMobile() {
