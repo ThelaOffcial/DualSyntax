@@ -4,7 +4,15 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="20260326_095411.jpg.ico">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+  emailjs.init("HnQDym23XAwpCNScT");
+})();
+</script>
 <title>DualSyntax — Own Your Space on the Web|Web designers in sri lanka|website creaters|sri lanka|Graphic desigeners in sri lanka|E-commerce web site developers|front-end developers|bsck-end D=developers|Web designers in sri lanka|Cyber Security</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -1269,27 +1277,40 @@
     </div>
 
     <div class="reveal">
-      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" placeholder="John" required></div>
-          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe" required></div>
-        </div>
-        <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@example.com" required></div>
-        <div class="form-group">
-          <label>Project Type</label>
-          <select>
-            <option value="">Select a service...</option>
-            <option>Web Design & UI/UX</option><option>Frontend Development</option>
-            <option>Full-Stack Web App</option><option>E-Commerce Store</option>
-            <option>Mobile PWA</option><option>Other / Not sure yet</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Tell Us About Your Project</label><textarea placeholder="Describe your project, goals, timeline, and budget range..."></textarea></div>
-        <button type="submit" class="form-submit">
-          Send Message
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg>
-        </button>
-      </form>
+      <form class="contact-form" id="contactForm">
+  <div class="form-row">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" name="name" placeholder="John Doe" required>
+    </div>
+    <div class="form-group">
+      <label>Project Type</label>
+      <select name="project_type">
+        <option value="">Select a service...</option>
+        <option>Web Design & UI/UX</option>
+        <option>Frontend Development</option>
+        <option>Full-Stack Web App</option>
+        <option>E-Commerce Store</option>
+        <option>Mobile PWA</option>
+        <option>Other / Not sure yet</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Email Address</label>
+    <input type="email" name="email" placeholder="john@example.com" required>
+  </div>
+  <div class="form-group">
+    <label>Tell Us About Your Project</label>
+    <textarea name="message" placeholder="Describe your project, goals, timeline, and budget range..."></textarea>
+  </div>
+  <button type="submit" class="form-submit">
+    Send Message
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M2 8h12M10 4l4 4-4 4"/>
+    </svg>
+  </button>
+</form>
       <div class="form-success" id="formSuccess">
         <div style="font-size:2.5rem;margin-bottom:12px">🎉</div>
         <h4>Message Sent!</h4>
@@ -1367,6 +1388,7 @@
   const saved = localStorage.getItem('ds-theme') || 'light';
   applyTheme(saved);
   btn.addEventListener('click', () => applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+
 
   // ── SCROLL PROGRESS
   const progressBar = document.getElementById('scrollProgress');
@@ -1603,6 +1625,32 @@ ham.addEventListener('click', () => {
       el.textContent = '🕐 ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     }
     tick(); setInterval(tick, 1000);
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const btn = this.querySelector('.form-submit');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  emailjs.sendForm('service_h9nvbal', 'template_uu2b2hq', this)
+    .then(() => {
+      console.log('Admin email SUCCESS');
+      return emailjs.sendForm('service_h9nvbal', 'template_7lnysrg', this);
+    })
+    .then(() => {
+      console.log('Reply email SUCCESS');
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    })
+    .catch((error) => {
+      console.error('EmailJS FULL ERROR:', JSON.stringify(error));
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+    });
+});
+
+
   })();
 </script>
 </body>
