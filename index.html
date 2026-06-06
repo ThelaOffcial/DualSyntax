@@ -375,7 +375,119 @@
     from { opacity: 0; transform: translateX(20px); }
     to   { opacity: 1; transform: translateX(0); }
   }
+/* DEVELOPERS */
+#developers{
+  background: var(--bg);
+}
 
+.developers-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:24px;
+  margin-top:56px;
+}
+
+.developer-card{
+  position:relative;
+  padding:32px;
+  border-radius:18px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  backdrop-filter:blur(16px);
+  overflow:hidden;
+  transition:all .35s ease;
+}
+
+.developer-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+      135deg,
+      rgba(41,121,255,.15),
+      rgba(0,198,255,.05)
+  );
+  opacity:0;
+  transition:.35s;
+}
+
+.developer-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(41,121,255,.35);
+  box-shadow:0 20px 60px rgba(41,121,255,.15);
+}
+
+.developer-card:hover::before{
+  opacity:1;
+}
+
+.developer-avatar{
+  width:72px;
+  height:72px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Oxanium',sans-serif;
+  font-weight:800;
+  font-size:1.3rem;
+  color:#fff;
+  background:linear-gradient(
+      135deg,
+      var(--accent),
+      var(--accent2)
+  );
+  box-shadow:0 0 30px rgba(41,121,255,.35);
+  margin-bottom:20px;
+  position:relative;
+  z-index:1;
+}
+
+.developer-role{
+  color:var(--accent);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+  position:relative;
+  z-index:1;
+}
+
+.developer-card h3{
+  font-family:'Oxanium',sans-serif;
+  font-size:1.5rem;
+  margin-bottom:12px;
+  position:relative;
+  z-index:1;
+}
+
+.developer-card p{
+  color:var(--text2);
+  line-height:1.7;
+  font-size:.9rem;
+  margin-bottom:22px;
+  position:relative;
+  z-index:1;
+}
+
+.developer-skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  position:relative;
+  z-index:1;
+}
+
+.developer-skills span{
+  padding:8px 14px;
+  border-radius:50px;
+  background:rgba(41,121,255,.12);
+  border:1px solid rgba(41,121,255,.2);
+  font-size:.75rem;
+  color:var(--accent);
+  font-weight:600;
+}
   .theme-btn {
     width: 40px; height: 40px; border-radius: 50%;
     border: 1px solid var(--border);
@@ -1447,7 +1559,67 @@
     </div>
   </div>
 </section>
+<!-- DEVELOPERS -->
+<section id="developers">
+  <div class="section-label reveal">Core Team</div>
+  <h2 class="section-title reveal">Meet The Developers</h2>
+  <p class="section-sub reveal">
+    The minds behind DualSyntax. Passionate developers building modern,
+    scalable and high-performance digital experiences.
+  </p>
 
+  <div class="developers-grid">
+
+    <!-- Samithu -->
+    <div class="developer-card reveal">
+      <div class="developer-avatar">
+        <span>SD</span>
+      </div>
+
+      <div class="developer-role">Founder • Full Stack Developer</div>
+      <h3>Samithu Dinil</h3>
+
+      <p>
+        Specializes in modern web applications, frontend architecture,
+        UI/UX design, Firebase solutions, and performance-focused
+        development. Passionate about creating elegant digital products.
+      </p>
+
+      <div class="developer-skills">
+        <span>React</span>
+        <span>Firebase</span>
+        <span>JavaScript</span>
+        <span>UI/UX</span>
+      </div>
+    </div>
+
+    <!-- Sasinda -->
+    <div class="developer-card reveal">
+      <div class="developer-avatar">
+        <span>SG</span>
+      </div>
+
+      <div class="developer-role">Co-Founder • Software Developer</div>
+      <h3>Sasinda Gimhana</h3>
+
+      <p>
+        Focused on backend systems, scalable architectures,
+        database engineering, API development and innovative
+        software solutions for modern businesses.
+      </p>
+
+      <div class="developer-skills">
+        <span>Node.js</span>
+        <span>APIs</span>
+        <span>PostgreSQL</span>
+        <span>Cloud</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
 <!-- FOOTER — FIXED: uses dual-logo.png instead of inline base64 -->
 <footer>
   <div class="footer-top">
